@@ -1,14 +1,24 @@
 import React from 'react'
+import useQuiosco from '../hooks/useQuiosco';
 
 function Categoria({categoria}) {
 
-    const {icono, id, nombre} = categoria
+    const {icono, id, nombre} = categoria;
+    const {handleClickCategoria, categoriaActual} = useQuiosco();
 
   return (
-    <div className='flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer' >
+    <div  
+      className={` ${categoriaActual.id === id ? " bg-amber-400" : 'bg-white'} flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer `} 
+    >
 
         <img src={`../../public/img/icono_${icono}.svg`} alt="Imagen Icono" className='w-12' />
-        <p className='text-lg font-bold cursor-pointer' >{nombre}</p>
+        <button 
+          className='text-lg font-bold cursor-pointer' 
+          type='button'
+          onClick={() => handleClickCategoria(id)}
+        >
+          {nombre}
+        </button>
 
     </div>
   )
