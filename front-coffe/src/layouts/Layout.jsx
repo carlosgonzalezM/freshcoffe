@@ -5,6 +5,8 @@ import Resumen from '../components/Resumen'
 import useQuiosco from '../hooks/useQuiosco'
 import Modal from 'react-modal'
 import ModalProducto from '../components/ModalProducto'
+// import ToastContainer from 'react-toastify'
+// import "react-toastify/dist/ReactToastify.css"
 
 
 const customStyles = {
@@ -44,7 +46,7 @@ function Layout() {
             <ModalProducto/>
         </Modal>
     
-
+      {/* <ToastContainer/> */}
     </>
 
   )
