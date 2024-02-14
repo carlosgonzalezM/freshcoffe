@@ -27,7 +27,7 @@ function Layout() {
   const {modal, handleClickModal} = useQuiosco();
 
   return (
-    <>
+    <div>
         <div className='md:flex' >
           
           <Sidebar/>
@@ -47,7 +47,7 @@ function Layout() {
         </Modal>
     
       {/* <ToastContainer/> */}
-    </>
+    </div>
 
   )
 }

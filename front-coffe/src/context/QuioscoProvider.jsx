@@ -14,7 +14,8 @@ const QuioscoProvider = ({children}) => {
     const [modal, setModal] = useState(false);
     const [producto, setProducto] = useState({});
     const [pedido, setPedido] = useState([]);
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [productosObtenidos, setProductosObtenidos] = useState([])
 
 
     useEffect(()=>{
@@ -32,8 +33,19 @@ const QuioscoProvider = ({children}) => {
         }
     }
 
+    const obtenerProductos = async () => {
+        try {
+            const {data} = await clienteAxios('/api/productos');
+            setProductosObtenidos(data.data);
+
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     useEffect(()=>{
         obtenerCategorias();
+        obtenerProductos();
     },[]);
 
     const handleClickCategoria = id => {
@@ -88,7 +100,9 @@ const QuioscoProvider = ({children}) => {
                 handleAgregarPedido,
                 handleEditarCantidad,
                 handleEliminarProductoPedido,
-                total
+                total,
+                productosObtenidos,
+                setProductosObtenidos
             }}
         >
             {children}
