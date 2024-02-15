@@ -5,6 +5,7 @@ import Resumen from '../components/Resumen'
 import useQuiosco from '../hooks/useQuiosco'
 import Modal from 'react-modal'
 import ModalProducto from '../components/ModalProducto'
+import { useAuth } from '../hooks/useAuth'
 // import ToastContainer from 'react-toastify'
 // import "react-toastify/dist/ReactToastify.css"
 
@@ -25,6 +26,12 @@ Modal.setAppElement('#root')
 function Layout() {
   
   const {modal, handleClickModal} = useQuiosco();
+
+  const {user, error} = useAuth({middleware: 'auth'})
+
+  console.log(user)
+  console.log(error)
+  
 
   return (
     <div>
